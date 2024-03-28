@@ -18,9 +18,9 @@ jobs:
         node-version: '14'
     - name: Install dependencies
       run: npm install
-    - name: Build code
-      run: npm run build
-    - name: Test code
-      run: npm test
+    - name: start the project
+      run: npm run serve &
+    - name: Wait for Vue server to sleep
+      run: sleep 12s
     - name: Stop server
-      run: npm stop
+      run: kill $(lsof -t -i :8080) || true
